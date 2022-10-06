@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-star-ratings',
   templateUrl: './star-ratings.component.html',
-  styleUrls: ['./star-ratings.component.scss']
+  styleUrls: ['./star-ratings.component.scss'],
 })
-export class StarRatingsComponent implements OnInit {
+export class StarRatingsComponent {
+  @Input() public rating = 5;
 
-  constructor() { }
+  public get fullStars(): number[] {
+    const totalFullStars = Math.floor(this.rating);
 
-  ngOnInit(): void {
+    return Array(totalFullStars).fill(0);
   }
+
+  public get hasHalfStar(): boolean {
+    const hasHalfStar = (this.rating - Math.floor(this.rating) >= 0.5) && this.rating !== 5;
+
+    return hasHalfStar;
+  } 
+
+  public get emptyStars() {
+    const highestRating = 5;
+    const totalEmptyStars = Math.floor(highestRating - this.rating);
+
+    return Array(totalEmptyStars).fill(0);
+  }
+
+
+
 
 }
