@@ -1,4 +1,6 @@
-@import "../../styles.scss";
+@import "/src/styles/colors";
+@import "/src/styles/mixins";
+@import "/src/styles.scss";
 
 .toolbar-container {
   display: grid;
@@ -8,7 +10,6 @@
   background-color: $blue;
   color: white;
   padding: 20px;
-  
 
   @include box-shadow();
 
@@ -22,8 +23,6 @@
     display: grid;
     grid-gap: 10px;
     grid-auto-flow: column;
-    
-    
   }
 
   li {
